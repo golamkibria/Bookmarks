@@ -1,0 +1,10 @@
+https://stackoverflow.com/questions/38086245/chrome-bookmarks-bar-context-menu
+
+https://developer.chrome.com/docs/extensions/reference/contextMenus/
+
+https://github.com/GoogleChrome/chrome-extensions-samples
+
+https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/apps/samples/context-menu
+
+https://developer.chrome.com/docs/extensions/reference/bookmarks/
+https://developer.chrome.com/docs/extensions/reference/contextMenus/
