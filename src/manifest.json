@@ -6,7 +6,7 @@
   "author": "gkmobin.net@gmail.com",
     
 	
-  "options_page": "options.html",
+  "options_page": "options/options.html",
 
   "action": {
     "default_icon": {                 

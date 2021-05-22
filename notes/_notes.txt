@@ -26,6 +26,11 @@ Web Links:
 
 Features:
     - Group: Collection Web References
+    - Sort By Options: Folder, Title, Url, Date Added, Date Modified, Hostname etc.
+    - Search: Basic & Advance: Folder, Title, Url, Hostname etc.
+    - Duplicate Removal
+    - Add Tags
+    - Add Shortcut to other Folder
 
 Names:
     - WebMark, WebMarks, WebMarkGroup

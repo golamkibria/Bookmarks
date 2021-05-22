@@ -34,7 +34,7 @@ sortBookmarkCurrentFolderBtn.addEventListener("click", async () => {
         if(isBookmarkMgrTab){
             getBookmarkManagerCurrentFolder(tab, (currentFolder) => {                
 			    console.log('getBookmarkManagerCurrentFolder', currentFolder);
-                bookMarkManagerCurrentFolderTxt.innerText =  "Current Folder: "+currentFolder.title;
+                bookMarkManagerCurrentFolderTxt.innerText =  currentFolder ? "Current Folder: "+ currentFolder.title : "[Select a bookmark folder]";
             });
         }
     });
