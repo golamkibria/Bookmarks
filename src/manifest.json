@@ -4,11 +4,16 @@
   "description": "Provide actions for managing bookmarks",
   "version": "0.1.0",
   "author": "gkmobin.net@gmail.com",
-  
-  "background" : {  "serviceworker": ["underscore-umd-min.js", "main.js"] },
+    
 	
   "options_page": "options.html",
+
   "action": {
+    "default_icon": {                 
+      "24": "images/icon24.png",
+      "32": "images/icon32.png",
+      "64": "images/icon64.png"
+    },
     "default_popup": "popup/popup.html"
   },
 

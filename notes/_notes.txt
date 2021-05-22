@@ -21,6 +21,8 @@ Web Links:
 
     https://developer.chrome.com/docs/extensions/mv3/user_interface/#popup
 
+    https://icons8.com/icons/set/bookmark
+
 
 Features:
     - Group: Collection Web References

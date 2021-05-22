@@ -10,6 +10,9 @@ Permissions:
 
 manifest options:
 ----------------      
+    "background" : {  "serviceworker": ["underscore-umd-min.js", "main.js"] },
+
     "permissions": [
         "bookmarks", "tabs","contextMenus","storage", "activeTab", "scripting"
     ]
+    
