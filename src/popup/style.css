@@ -1,0 +1,21 @@
+
+body{
+    width: 250px;
+    padding: 10px;
+    border: solid 1px goldenrod;
+    background-color: antiquewhite;
+}
+
+h2{
+    color: #777777;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+div.actions{
+    padding: 15px 0 5px 0;
+}
+
+div.actions button{
+    margin: 5px;
+}

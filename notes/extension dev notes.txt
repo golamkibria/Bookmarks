@@ -1,0 +1,15 @@
+
+Q: How to view the console log used in popup.js
+    A: Right click the extension icon. Click 'Inspact popup'.
+        - 'Inspact popup' is visible when 'Developer Mode' of browse is enable.
+
+
+Permissions:
+    - chrome.tabs.query: { 'url': 'chrome://bookmarks/*' } - filter by URL requires "tabs" permission.
+
+
+manifest options:
+----------------      
+    "permissions": [
+        "bookmarks", "tabs","contextMenus","storage", "activeTab", "scripting"
+    ]

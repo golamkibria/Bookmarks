@@ -19,6 +19,8 @@ Web Links:
         
     https://webstyleguide.com/wsg3/3-information-architecture/2-organizing-information.html
 
+    https://developer.chrome.com/docs/extensions/mv3/user_interface/#popup
+
 
 Features:
     - Group: Collection Web References

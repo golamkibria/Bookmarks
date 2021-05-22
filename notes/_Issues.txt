@@ -12,7 +12,7 @@
 04. Bookmark inshight reports
     - Duplicate Bookmarks
     
-05. Advance: Add custom attributes with Bookmakrs
+05. Advance: Add custom attributes with Bookmarks
     - Save custom attributes in local storage and in cloud, auto sync, offline edit etc.
 06. Advance: Download bookmarked pages in local Folder or cloud
 07. Advance: Custom Search

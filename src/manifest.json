@@ -1,20 +1,18 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Manage Bookmarks",
   "description": "Provide actions for managing bookmarks",
-  "version": "1.0",
+  "version": "0.1.0",
   "author": "gkmobin.net@gmail.com",
   
-  "background" : {  "scripts": ["underscore-umd-min.js", "main.js"] },
-  
-  "__browser_action": {
-      "default_title": "Some tooltip",
-      "default_popup": "popup.html"
-    },
+  "background" : {  "serviceworker": ["underscore-umd-min.js", "main.js"] },
 	
   "options_page": "options.html",
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+
   "permissions": [
-    "bookmarks",
-	"contextMenus"
+    "bookmarks", "tabs"
   ]
 }
