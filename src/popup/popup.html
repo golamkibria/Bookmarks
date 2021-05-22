@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="../common/style.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h2>Arrange Bookmarks</h2>
-    <div class="actions">
-      <!-- <button id="changeColor">Change Color</button> -->
-      <button id="openBookmarkManagerBtn">Open Bookmark Manager</button>
-      <div style="padding: 7px 0;">
-        <button id="sortBookmarkCurrentFolderBtn" disabled>Sort Current Bookmark Folder</button>
-        <div id="bookMarkManagerCurrentFolderTxt" style="padding-left: 10px;"></div>
-      </div>        
+    <main>
+      <h2>Arrange Bookmarks</h2>
+      <div class="actions">
+        <!-- <button id="changeColor">Change Color</button> -->
+        <button id="openBookmarkManagerBtn">Open Bookmark Manager</button>
+        <div style="padding: 7px 0;">
+          <button id="sortBookmarkCurrentFolderBtn" disabled>Sort Current Bookmark Folder</button>
+          <div id="bookMarkManagerCurrentFolderTxt" style="padding-left: 10px;"></div>
+        </div>        
 
-    </div>    
-    <div id='dateDisplay' style="text-align: right;"></div>
-    <footer>
-      <div style="text-align: center; color: #777; margin-top: 15px;">&copy;gkmobin.net</span>
-    </footer>
+      </div>    
+      <div id='dateDisplay' style="text-align: right;"></div>    
+    </main>
+    <footer>&copy;gkmobin.net</footer>    
+    <script src="../libs/underscore-umd-min.js"></script>
+    <script src="../main.js"></script>
+    <script src="popup.js"></script>
   </body>
-  <script src="../libs/underscore-umd-min.js"></script>
-  <script src="../main.js"></script>
-  <script src="popup.js"></script>
 </html>

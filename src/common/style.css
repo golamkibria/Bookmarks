@@ -1,0 +1,8 @@
+footer {
+    text-align: center;
+}
+.icon-img{
+    background-image: url('../images/icon32.png');
+    width: 32px;
+    height: 32px;
+}

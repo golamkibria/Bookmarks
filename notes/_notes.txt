@@ -31,6 +31,7 @@ Features:
     - Duplicate Removal
     - Add Tags
     - Add Shortcut to other Folder
+    - Empty Folder
 
 Names:
     - WebMark, WebMarks, WebMarkGroup
