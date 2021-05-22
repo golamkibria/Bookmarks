@@ -1,6 +1,33 @@
 // Copyright (c) 2021 gkmobin.net@gmail.com. All rights reserved.
 (function (_) {
 
+	function isFolder(bookmarkNode){
+		return _.has(bookmarkNode, 'dateGroupModified');
+	}
+
+	function sortBookmarkNode(bookmarkNodeId){	
+
+		chrome.bookmarks.get(bookmarkNodeId, function (parentNode) {
+			// console.log('BookmarkNode: ', parentNode);
+
+			chrome.bookmarks.getChildren(bookmarkNodeId, function (children) {
+
+				//Sort by reverse order
+				var sortedChildren = _.sortBy(children, function (item) {
+					return [isFolder(item) ? 0 : 1, item.title];
+				});
+	
+				_.each(sortedChildren, function (childBookmarkNode, index) {
+					// console.log(childBookmarkNode);
+					chrome.bookmarks.move(childBookmarkNode.id, { index: index, parentId: parentNode.id });
+					
+					if(isFolder(childBookmarkNode))
+						sortBookmarkNode(childBookmarkNode.id);
+				});
+			});		
+		});		
+	}
+
 	function sortBookmarks(info, tab) {
 		//console.log('callbackHandler: ', info, tab);
 
@@ -13,22 +40,7 @@
 		const currentBookmarkNodeId = url.searchParams.get('id');
 		console.log('ContextMenuID', currentBookmarkNodeId)
 
-		chrome.bookmarks.get(currentBookmarkNodeId, function (node) {
-			console.log('BookmarkNode: ', node);
-
-			chrome.bookmarks.getChildren(currentBookmarkNodeId, function (children) {
-
-				//Sort by reverse order
-				var sortedChildren = _.sortBy(children, function (item) {
-					return [_.has(item, 'dateGroupModified') ? 0 : 1, item.title];
-				});
-
-				_.each(sortedChildren, function (item, index) {
-					console.log(item);
-					chrome.bookmarks.move(item.id, { index: index, parentId: node.id });
-				});
-			});
-		});
+		sortBookmarkNode(currentBookmarkNodeId);
 	}
 
 	function setUpContextMenus() {

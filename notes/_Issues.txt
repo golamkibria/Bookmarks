@@ -1,0 +1,25 @@
+01. Implement Popup view for Bookmark manager. This will be opened on click of ContextMenu of Bookmark Extension Icon.
+02. Add Sort Options:
+    - Sort Current 0Folder
+        - Recursive
+        - Sort by IsFolder Then by  Title
+        - Advance: Custom Order Options
+
+    - Sort Whole Bookmark Tree: 
+        - Confirm before execute
+    -
+03. Custom Bookmarks Tree view
+04. Bookmark inshight reports
+    - Duplicate Bookmarks
+    
+05. Advance: Add custom attributes with Bookmakrs
+    - Save custom attributes in local storage and in cloud, auto sync, offline edit etc.
+06. Advance: Download bookmarked pages in local Folder or cloud
+07. Advance: Custom Search
+08. Advance: Add Shortcut link as Bookmarks
+09. Advance: Page preview
+10. Advance: Add to Favorite
+11. Advance: R&D Features from similar extensions.
+12. Dev: Automatic Testing
+13. Dedicated web site!
+14. 

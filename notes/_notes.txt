@@ -1,0 +1,42 @@
+Web Links:
+    https://stackoverflow.com/questions/38086245/chrome-bookmarks-bar-context-menu
+
+    https://developer.chrome.com/docs/extensions/reference/contextMenus/
+
+    https://github.com/GoogleChrome/chrome-extensions-samples
+
+    https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/apps/samples/context-menu
+
+    https://developer.chrome.com/docs/extensions/reference/bookmarks/
+    https://developer.chrome.com/docs/extensions/reference/contextMenus/
+
+    https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/mv2-archive/api/contextMenus
+    https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/mv2-archive/api/bookmarks/basic
+
+    https://en.wikipedia.org/wiki/Resource_Description_Framework
+        https://en.wikipedia.org/wiki/Metadata
+        https://en.wikipedia.org/wiki/Data_model
+        
+    https://webstyleguide.com/wsg3/3-information-architecture/2-organizing-information.html
+
+
+Features:
+    - Group: Collection Web References
+
+Names:
+    - WebMark, WebMarks, WebMarkGroup
+    - Web Information Management: WIM
+    - Collection, Organization, Annotation: COAWI
+    - Sharing, Collaboration, Social
+
+Annotation:
+    - An annotation is extra information associated with a particular point in a document or other piece of information. [wiki]
+        It can be a note that includes a comment or explanation. 
+        Annotations are sometimes presented in the margin of book pages.
+
+Bookmark:
+    - In the context of the World Wide Web, a bookmark is a Uniform Resource Identifier that is stored for later retrieval in any of various storage formats. [wiki]
+        All modern web browsers include bookmark features.
+    - 1: a marker for finding a place in a book. 
+        2 : a menu entry or icon on a computer that is usually created by the user and 
+            that serves as a shortcut to a previously viewed location (such as an Internet site) bookmark
