@@ -46,6 +46,23 @@
 		sortBookmarkNode(currentBookmarkFolderId);
 	}
 
+	function getBookmarkManagerCurrentFolder(bookmarkManagerTab, callback){
+		if(!isBookmarkManagerTab(bookmarkManagerTab))
+			return;
+
+		const url = new URL(bookmarkManagerTab.url);
+		const currentBookmarkFolderId = url.searchParams.get('id');
+
+		if(currentBookmarkFolderId == null){//root
+			callback(null);
+			return;
+		}
+
+		chrome.bookmarks.get(currentBookmarkFolderId, function ([folder]) {
+			callback(folder);
+		});	
+	}
+
 	function isBookmarkManagerTab(tab){
 		if(tab && tab.url){
 			const url = new URL(tab.url);		

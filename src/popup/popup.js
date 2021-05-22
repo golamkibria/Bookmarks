@@ -26,9 +26,17 @@ sortBookmarkCurrentFolderBtn.addEventListener("click", async () => {
     sortBookmarkCurrentFolder(tab);
 });
 
-(function enableSortBookmarkCurrentFolder(){
+(function enableSortBookmarkCurrentFolderBtn(){
     chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {        
-        sortBookmarkCurrentFolderBtn.disabled = !isBookmarkManagerTab(tab);
+        const isBookmarkMgrTab = isBookmarkManagerTab(tab);
+        sortBookmarkCurrentFolderBtn.disabled = !isBookmarkMgrTab;
+
+        if(isBookmarkMgrTab){
+            getBookmarkManagerCurrentFolder(tab, (currentFolder) => {                
+			    console.log('getBookmarkManagerCurrentFolder', currentFolder);
+                bookMarkManagerCurrentFolderTxt.innerText =  "Current Folder: "+currentFolder.title;
+            });
+        }
     });
 })();
 
