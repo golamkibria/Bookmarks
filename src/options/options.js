@@ -38,12 +38,13 @@ function refreshOrderByOptionsSettings() {
 }
 
 
-function orderByOptionsChecked(element) {
-    if (element.checked) {
-        $(element).parent().addClass('selected');
+function orderByOptionsChecked(checkbox) {
+
+    if (checkbox.prop('checked')) {
+        checkbox.parent('.order-by-option').addClass('selected');
     }
     else {
-        $(element).parent().removeClass('selected');
+        checkbox.parent('.order-by-option').removeClass('selected');
     }
 }
 
@@ -62,7 +63,7 @@ function setOptions(options) {
 
             positions.push({ index: option.index, element: $(this) });
         }
-        else{
+        else {
             positions.push({ index: i, element: $(this) });
         }
     });
@@ -79,12 +80,8 @@ function setOptions(options) {
 
 }
 
-function bindOrderByOptions(options) {
 
-    orderByOptions.find('[type=checkbox]').change(function () {
-        orderByOptionsChecked(this);
-        refreshOrderByOptionsSettings();
-    });
+function bindOrderByOptions(options) {
 
     setOptions(options);
 
@@ -96,6 +93,17 @@ function bindOrderByOptions(options) {
     }).bind('sortupdate', function (e, ui) {
         refreshOrderByOptionsSettings();
     });
+
+
+    orderByOptions.find('[type=checkbox]').bind('change', function () {
+        orderByOptionsChecked($(this));
+        refreshOrderByOptionsSettings();
+    });
+
+    orderByOptions.find('[type=checkbox]').each(function () {
+        orderByOptionsChecked($(this));
+    });
+    refreshOrderByOptionsSettings();
 }
 
 
