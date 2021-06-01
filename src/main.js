@@ -30,6 +30,36 @@ function sortBookmarkNode(bookmarkNodeId, sortRules) {
 	});
 }
 
+function getSortRules(options) {
+
+	const sortRules = [];
+
+	const sortedOptions = _.sortBy(options.orderByOptionsSettings, op => op.index);
+
+	_.each(sortedOptions, option => {
+
+		if (option.selected) {
+			switch (option.value) {
+				case 'Folder':
+					sortRules.push(bookmarkNode => isFolder(bookmarkNode) ? 0 : 1);
+					break;
+
+				case 'Title':
+					sortRules.push(bookmarkNode => bookmarkNode.title);
+					break;
+
+				case 'Hostname':
+					sortRules.push(bookmarkNode => bookmarkNode.url ? (new URL(bookmarkNode.url)).hostname : null);
+					break;
+			}
+		}
+	});
+
+	console.log('SortRules: ', options, sortRules);
+
+	return sortRules;
+}
+
 function sortBookmarkCurrentFolder(bookmarkManagerTab) {
 
 	if (!isBookmarkManagerTab(bookmarkManagerTab))
@@ -44,33 +74,7 @@ function sortBookmarkCurrentFolder(bookmarkManagerTab) {
 		return;
 
 	optionsProvider.get(options => {
-		const sortRules = [];
-
-		const sortedOptions = _.sortBy(options.orderByOptionsSettings, op => op.index );
-
-		_.each(sortedOptions, option => {
-
-			if (option.selected) {
-				switch (option.value) {
-					case 'Folder':
-						sortRules.push(bookmarkNode => isFolder(bookmarkNode) ? 0 : 1);
-						break;
-
-					case 'Title':
-						sortRules.push(bookmarkNode => bookmarkNode.title);
-						break;
-
-					case 'Hostname':
-						break;
-				}
-			}
-		});
-
-		//sortRules.reverse();
-
-		console.log('sortBookmarkCurrentFolder: ', currentBookmarkFolderId, options, sortRules);
-
-		sortBookmarkNode(currentBookmarkFolderId, sortRules);
+		sortBookmarkNode(currentBookmarkFolderId, getSortRules(options));
 	});
 
 }
