@@ -14,7 +14,6 @@ function sortBookmarkNode(bookmarkNodeId, sortRules) {
 
 		chrome.bookmarks.getChildren(bookmarkNodeId, function (children) {
 
-			//Sort by reverse order
 			var sortedChildren = _.sortBy(children, function (bookmarkNode) {
 				return _.map(sortRules, rule => rule(bookmarkNode));
 			});
@@ -49,7 +48,11 @@ function getSortRules(options) {
 					break;
 
 				case 'Hostname':
-					sortRules.push(bookmarkNode => bookmarkNode.url ? (new URL(bookmarkNode.url)).hostname : null);
+					sortRules.push(bookmarkNode => bookmarkNode.url ? new URL(bookmarkNode.url).hostname : null);
+					break;
+
+				case 'Url':
+					sortRules.push(bookmarkNode => bookmarkNode.url);
 					break;
 			}
 		}

@@ -51,7 +51,7 @@ function setOptions(options) {
 
     let positions = [];
 
-    orderByOptions.find('.order-by-option').each(function () {
+    orderByOptions.find('.order-by-option').each(function (i) {
 
         const checkbox = $(this).find('[type=checkbox]');
         const option = _.findWhere(options.orderByOptionsSettings, { value: checkbox.val() });
@@ -61,6 +61,9 @@ function setOptions(options) {
             checkbox.prop("checked", option.selected);
 
             positions.push({ index: option.index, element: $(this) });
+        }
+        else{
+            positions.push({ index: i, element: $(this) });
         }
     });
 

@@ -6,7 +6,8 @@ var optionsProvider = (function () {
     const orderByOptionsSettingsDefault = [
         { index: 0, value: 'Folder', selected: true },
         { index: 1, value: 'Title', selected: true },
-        { index: 2, value: 'Hostname', selected: false }
+        { index: 2, value: 'Hostname', selected: false },
+        { index: 3, value: 'Url', selected: false }
     ];
 
 
