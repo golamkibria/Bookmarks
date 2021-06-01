@@ -1,80 +1,85 @@
 // Copyright (c) 2021 gkmobin.net@gmail.com. All rights reserved.
 // (function (_) {
 
-	function isFolder(bookmarkNode){
-		return _.has(bookmarkNode, 'dateGroupModified');
+function isFolder(bookmarkNode) {
+	return _.has(bookmarkNode, 'dateGroupModified');
+}
+
+function sortBookmarkNode(bookmarkNodeId, orderByOptionsSettings) {
+	if (bookmarkNodeId == null)
+		return;
+
+	console.log('sortBookmarkNode: options', bookmarkNodeId, orderByOptionsSettings);
+
+	chrome.bookmarks.get(bookmarkNodeId, function (parentNode) {
+		// console.log('BookmarkNode: ', parentNode);
+
+		chrome.bookmarks.getChildren(bookmarkNodeId, function (children) {
+
+			//Sort by reverse order
+			var sortedChildren = _.sortBy(children, function (item) {
+				return [isFolder(item) ? 0 : 1, item.title];
+			});
+
+			_.each(sortedChildren, function (childBookmarkNode, index) {
+				// console.log(childBookmarkNode);
+				chrome.bookmarks.move(childBookmarkNode.id, { index: index, parentId: parentNode.id });
+
+				if (isFolder(childBookmarkNode))
+					sortBookmarkNode(childBookmarkNode.id, orderByOptionsSettings);
+			});
+		});
+	});
+}
+
+function sortBookmarkCurrentFolder(bookmarkManagerTab) {
+
+	if (!isBookmarkManagerTab(bookmarkManagerTab))
+		return;
+
+	const url = new URL(bookmarkManagerTab.url);
+	const currentBookmarkFolderId = url.searchParams.get('id');
+
+	console.log('CurrentBookmarkFolder', currentBookmarkFolderId);
+
+	if (currentBookmarkFolderId == null)//root
+		return;
+
+	optionsProvider.get(options => {
+		sortBookmarkNode(currentBookmarkFolderId, options.orderByOptionsSettings);
+	});
+
+}
+
+function getBookmarkManagerCurrentFolder(bookmarkManagerTab, callback) {
+	if (!isBookmarkManagerTab(bookmarkManagerTab))
+		return;
+
+	const url = new URL(bookmarkManagerTab.url);
+	const currentBookmarkFolderId = url.searchParams.get('id');
+
+	if (currentBookmarkFolderId == null) {//root
+		callback(null);
+		return;
 	}
 
-	function sortBookmarkNode(bookmarkNodeId){
-		if(bookmarkNodeId == null)
-			return;
+	chrome.bookmarks.get(currentBookmarkFolderId, function ([folder]) {
+		callback(folder);
+	});
+}
 
-		chrome.bookmarks.get(bookmarkNodeId, function (parentNode) {
-			// console.log('BookmarkNode: ', parentNode);
-
-			chrome.bookmarks.getChildren(bookmarkNodeId, function (children) {
-
-				//Sort by reverse order
-				var sortedChildren = _.sortBy(children, function (item) {
-					return [isFolder(item) ? 0 : 1, item.title];
-				});
-	
-				_.each(sortedChildren, function (childBookmarkNode, index) {
-					// console.log(childBookmarkNode);
-					chrome.bookmarks.move(childBookmarkNode.id, { index: index, parentId: parentNode.id });
-					
-					if(isFolder(childBookmarkNode))
-						sortBookmarkNode(childBookmarkNode.id);
-				});
-			});		
-		});		
+function isBookmarkManagerTab(tab) {
+	if (tab && tab.url) {
+		const url = new URL(tab.url);
+		return url.hostname == 'bookmarks';
 	}
-
-	function sortBookmarkCurrentFolder(bookmarkManagerTab){
-
-		if(!isBookmarkManagerTab(bookmarkManagerTab))
-			return;
-
-		const url = new URL(bookmarkManagerTab.url);
-		const currentBookmarkFolderId = url.searchParams.get('id');
-
-		console.log('CurrentBookmarkFolder', currentBookmarkFolderId);
-
-		if(currentBookmarkFolderId == null)//root
-			return;
-
-		sortBookmarkNode(currentBookmarkFolderId);
-	}
-
-	function getBookmarkManagerCurrentFolder(bookmarkManagerTab, callback){
-		if(!isBookmarkManagerTab(bookmarkManagerTab))
-			return;
-
-		const url = new URL(bookmarkManagerTab.url);
-		const currentBookmarkFolderId = url.searchParams.get('id');
-
-		if(currentBookmarkFolderId == null){//root
-			callback(null);
-			return;
-		}
-
-		chrome.bookmarks.get(currentBookmarkFolderId, function ([folder]) {
-			callback(folder);
-		});	
-	}
-
-	function isBookmarkManagerTab(tab){
-		if(tab && tab.url){
-			const url = new URL(tab.url);		
-			return url.hostname == 'bookmarks';
-		}
-		return false;
-	}
+	return false;
+}
 
 /*
 	function sortBookmarks(info, tab) {
 		//console.log('callbackHandler: ', info, tab);
-		
+
 		const url = new URL(tab.url);
 		console.log('Tab.URL:', url, url.hostname);
 

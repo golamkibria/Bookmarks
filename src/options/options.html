@@ -14,27 +14,49 @@
 </head>
 
 <body>
-  <div class="col-lg-8 mx-auto p-3 py-md-5">
+  <div class="col-lg-8 mx-auto py-md-5 options">
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-      <span class="icon-img"></span><!-- <i class="bi bi-journal-bookmark-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
+      <span class="icon-img"></span>
+      <!-- <i class="bi bi-journal-bookmark-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
       <span class="fs-4">Arrange Bookmarks</span>
     </header>
     <main>
-      <div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Keep folders before links
-          </label>
+      <section>
+        <h3 class="fs-5">Order by sequence:</h3>
+        <div id="orderByOptions">
+          <div class="form-check order-by-option">
+            <span class="bi bi-arrows-move handle"></span>
+            <input class="form-check-input" type="checkbox" value="Folder" id="orderByFolder">
+            <label class="form-check-label" for="orderByFolder">Folder (Keep folders before links)</label>
+          </div>
+          <div class="form-check order-by-option">
+            <span class="bi bi-arrows-move handle"></span>
+            <input class="form-check-input" type="checkbox" value="Title" id="orderByTitle">
+            <label class="form-check-label" for="orderByTitle">Title</label>
+          </div>
+          <div class="form-check order-by-option">
+            <span class="bi bi-arrows-move handle"></span>
+            <input class="form-check-input" type="checkbox" value="Hostname" id="orderByHostname">
+            <label class="form-check-label" for="orderByHostname">Hostname</label>
+          </div>
         </div>
-      </div>
+        <div id="orderByOptionsTxt" class="pt-2">
+        </div>
+      </section>
+      <section class="pt-3">
+        <button id="saveChangesBtn" type="button" class="btn btn-outline-dark">Save</button>
+      </section>
     </main>
     <footer class="pt-5 my-5 text-muted border-top">
       &copy;gkmobin.net
     </footer>
   </div>
 
+  <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
   <script src="../libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../libs/psfpro-bootstrap-html5sortable/jquery.sortable.min.js"></script>
+  <script src="../libs/underscore-umd-min.js"></script>
+  <script src="orderByOptions.js"></script>
   <script src="options.js"></script>
 </body>
 

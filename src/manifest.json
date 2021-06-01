@@ -18,6 +18,6 @@
   },
 
   "permissions": [
-    "bookmarks", "tabs"
+    "bookmarks", "tabs", "storage"
   ]
 }

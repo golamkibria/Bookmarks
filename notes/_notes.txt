@@ -1,17 +1,23 @@
-Web Links:
-    https://stackoverflow.com/questions/38086245/chrome-bookmarks-bar-context-menu
+Web Links: 
 
-    https://developer.chrome.com/docs/extensions/reference/contextMenus/
+    https://developer.chrome.com/docs/extensions/mv3/architecture-overview/ [***]
+    https://developer.chrome.com/docs/extensions/mv3/background_pages/
+    https://developer.chrome.com/docs/extensions/mv3/user_interface/
+    https://developer.chrome.com/docs/extensions/mv3/user_interface/#popup
+    https://developer.chrome.com/docs/extensions/reference/pageAction/
 
-    https://github.com/GoogleChrome/chrome-extensions-samples
-
-    https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/apps/samples/context-menu
+    https://developer.chrome.com/docs/extensions/mv3/options/
 
     https://developer.chrome.com/docs/extensions/reference/bookmarks/
     https://developer.chrome.com/docs/extensions/reference/contextMenus/
+    https://developer.chrome.com/docs/extensions/reference/contextMenus/
 
+    https://github.com/GoogleChrome/chrome-extensions-samples
+    https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/apps/samples/context-menu
     https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/mv2-archive/api/contextMenus
     https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/mv2-archive/api/bookmarks/basic
+
+    https://stackoverflow.com/questions/38086245/chrome-bookmarks-bar-context-menu 
 
     https://en.wikipedia.org/wiki/Resource_Description_Framework
         https://en.wikipedia.org/wiki/Metadata
@@ -19,9 +25,8 @@ Web Links:
         
     https://webstyleguide.com/wsg3/3-information-architecture/2-organizing-information.html
 
-    https://developer.chrome.com/docs/extensions/mv3/user_interface/#popup
-
     https://icons8.com/icons/set/bookmark
+    
 
 
 Features:

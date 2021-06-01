@@ -6,3 +6,20 @@ footer {
     width: 32px;
     height: 32px;
 }
+
+
+
+.options .orderByOptions{
+    position: relative;
+}
+
+.options .orderByOptions .bi.handle{
+    cursor: pointer;
+}
+
+.order-by-option.selected{
+    font-weight: bold;
+}
+#orderByOptionsTxt i{
+    color: gray;
+}
