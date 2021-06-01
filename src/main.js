@@ -5,11 +5,9 @@ function isFolder(bookmarkNode) {
 	return _.has(bookmarkNode, 'dateGroupModified');
 }
 
-function sortBookmarkNode(bookmarkNodeId, orderByOptionsSettings) {
+function sortBookmarkNode(bookmarkNodeId, sortRules) {
 	if (bookmarkNodeId == null)
 		return;
-
-	console.log('sortBookmarkNode: options', bookmarkNodeId, orderByOptionsSettings);
 
 	chrome.bookmarks.get(bookmarkNodeId, function (parentNode) {
 		// console.log('BookmarkNode: ', parentNode);
@@ -17,8 +15,8 @@ function sortBookmarkNode(bookmarkNodeId, orderByOptionsSettings) {
 		chrome.bookmarks.getChildren(bookmarkNodeId, function (children) {
 
 			//Sort by reverse order
-			var sortedChildren = _.sortBy(children, function (item) {
-				return [isFolder(item) ? 0 : 1, item.title];
+			var sortedChildren = _.sortBy(children, function (bookmarkNode) {
+				return _.map(sortRules, rule => rule(bookmarkNode));
 			});
 
 			_.each(sortedChildren, function (childBookmarkNode, index) {
@@ -26,7 +24,7 @@ function sortBookmarkNode(bookmarkNodeId, orderByOptionsSettings) {
 				chrome.bookmarks.move(childBookmarkNode.id, { index: index, parentId: parentNode.id });
 
 				if (isFolder(childBookmarkNode))
-					sortBookmarkNode(childBookmarkNode.id, orderByOptionsSettings);
+					sortBookmarkNode(childBookmarkNode.id, sortRules);
 			});
 		});
 	});
@@ -46,7 +44,33 @@ function sortBookmarkCurrentFolder(bookmarkManagerTab) {
 		return;
 
 	optionsProvider.get(options => {
-		sortBookmarkNode(currentBookmarkFolderId, options.orderByOptionsSettings);
+		const sortRules = [];
+
+		const sortedOptions = _.sortBy(options.orderByOptionsSettings, op => op.index );
+
+		_.each(sortedOptions, option => {
+
+			if (option.selected) {
+				switch (option.value) {
+					case 'Folder':
+						sortRules.push(bookmarkNode => isFolder(bookmarkNode) ? 0 : 1);
+						break;
+
+					case 'Title':
+						sortRules.push(bookmarkNode => bookmarkNode.title);
+						break;
+
+					case 'Hostname':
+						break;
+				}
+			}
+		});
+
+		//sortRules.reverse();
+
+		console.log('sortBookmarkCurrentFolder: ', currentBookmarkFolderId, options, sortRules);
+
+		sortBookmarkNode(currentBookmarkFolderId, sortRules);
 	});
 
 }
